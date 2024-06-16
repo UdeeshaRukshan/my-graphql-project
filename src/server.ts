@@ -5,12 +5,12 @@ import path from 'path';
 import resolvers from './resolvers';
 
 const typeDefs = gql`
-  ${fs.readFileSync(path.join(__dirname, './schema.graphql'), 'utf8')}
+  ${fs.readFileSync(path.join(__dirname, './typedef.graphql'), 'utf8')}
 `;
 
 async function startServer() {
   const server = new ApolloServer({ typeDefs, resolvers });
-  await server.start(); // Await server start
+  await server.start();
 
   const app = express();
   server.applyMiddleware({ app });
